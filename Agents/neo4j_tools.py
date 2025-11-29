@@ -1,5 +1,8 @@
 """
 Neo4j database tools for misinformation analysis storage
+
+This module provides a client for storing misinformation analysis results in a Neo4j graph database,
+creating nodes for scans, verdicts, claims, sources, and media assets with their relationships.
 """
 import os
 from typing import Optional, Dict, Any, List
