@@ -1,6 +1,9 @@
 """
 Report Generator Agent
 Generates detailed human-readable reports from analysis results.
+
+This agent transforms technical analysis data into comprehensive, human-readable reports
+with executive summaries, detailed findings, risk assessments, and actionable recommendations.
 """
 from langchain.agents import create_agent
 from Agents.prompts import REPORT_GENERATOR_PROMPT

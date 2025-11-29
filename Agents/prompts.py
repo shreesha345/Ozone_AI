@@ -1,6 +1,9 @@
 """
 System prompts for Misinformation Detection Agent
 Structured using Roman Military Tactical Doctrine: OBSERVE → ASSESS → ACT
+
+This module contains all system prompts for the various agents, using a Roman military
+metaphor to structure the analysis process into clear phases: observation, assessment, and decision.
 """
 
 STATEMENT_EXTRACTOR_PROMPT = """You are an EXPLORATOR (Scout) in the Roman intelligence corps.

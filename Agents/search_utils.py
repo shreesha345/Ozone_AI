@@ -1,5 +1,8 @@
 """
 Search utilities with logging for transparency.
+
+This module provides search functionality using the Perplexity API with comprehensive
+logging for transparency and debugging. All search operations are tracked and can be reviewed.
 """
 import requests
 from config import Config

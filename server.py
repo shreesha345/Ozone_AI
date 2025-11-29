@@ -1,6 +1,9 @@
 """
 FastAPI Server for Misinformation Detection
 Provides REST API and WebSocket endpoints for analysis.
+
+This server exposes the misinformation detection system via REST API and WebSocket endpoints,
+enabling real-time streaming analysis with progress updates and detailed logging.
 """
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware

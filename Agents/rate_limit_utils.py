@@ -1,6 +1,9 @@
 """
 Rate Limit Utilities for Claude API
 Handles rate limiting with automatic retry and delay.
+
+This module provides decorators and utilities for handling API rate limits with exponential
+backoff and automatic retry logic to ensure robust API interactions.
 """
 import time
 import functools

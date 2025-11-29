@@ -1,6 +1,9 @@
 """
-Misinformation Detection Agent
+Misinformation Detection Agent - CLI Interface
 Comprehensive analysis with Neo4j graph storage.
+
+This is the command-line interface for the misinformation detection system.
+It provides an interactive prompt for analyzing text and URLs for misinformation.
 """
 from Agents.misinfoAgent import MisinformationDetector
 from Agents.search_utils import print_search_summary, search_logger

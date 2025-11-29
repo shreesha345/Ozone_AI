@@ -1,6 +1,10 @@
-// Content script for OzoneAI drag-and-drop extension
-// Runs on all web pages
-
+/**
+ * OzoneAI Browser Extension - Content Script
+ * 
+ * Enables drag-and-drop functionality on all web pages, capturing text, images, links,
+ * and social media posts. Creates a floating chatbot interface for immediate analysis.
+ * Runs on all web pages and detects content from Twitter, LinkedIn, Facebook, WhatsApp, etc.
+ */
 let isEnabled = true;
 let draggedContent = null;
 let floatingChatbot = null;

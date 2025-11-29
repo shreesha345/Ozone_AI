@@ -1,6 +1,9 @@
 """
 Source Analyzer Agent
 Analyzes publisher/source reputation and credibility with logging.
+
+This agent evaluates the credibility and reputation of news sources and publishers
+by analyzing their history, ownership, bias, and track record for accuracy.
 """
 from langchain.agents import create_agent
 from langchain_core.tools import tool

@@ -1,6 +1,9 @@
 """
 Verdict Synthesizer Agent
 Synthesizes all analysis results into final verdict.
+
+This agent combines results from all analysis modules (claims, source, bias, media)
+to produce a final verdict with an overall credibility score and risk assessment.
 """
 from langchain.agents import create_agent
 from Agents.prompts import VERDICT_SYNTHESIZER_PROMPT

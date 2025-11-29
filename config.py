@@ -1,5 +1,8 @@
 """
-Configuration handler for Neo4j Deep Agent
+Configuration handler for Misinformation Detection Agent
+
+This module manages all configuration settings including API keys, model selection,
+Neo4j connection details, and performance parameters with auto-detection and validation.
 """
 import os
 from dotenv import load_dotenv

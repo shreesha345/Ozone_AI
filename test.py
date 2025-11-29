@@ -1,3 +1,10 @@
+"""
+WebSocket Test Client
+Continuous testing script for WebSocket connection to the misinformation detection server.
+
+This script sends periodic test messages to the WebSocket endpoint and displays responses
+for debugging and connection testing purposes.
+"""
 import asyncio
 import websockets
 

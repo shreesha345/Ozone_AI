@@ -1,6 +1,9 @@
 """
 Statement Extractor Agent
 Extracts individual factual statements from input text.
+
+This agent parses input text to identify and extract verifiable factual claims,
+filtering out opinions and non-factual content for subsequent fact-checking.
 """
 from langchain.agents import create_agent
 from Agents.prompts import STATEMENT_EXTRACTOR_PROMPT

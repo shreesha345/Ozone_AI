@@ -1,4 +1,9 @@
-// Background service worker
+/**
+ * OzoneAI Browser Extension - Background Service Worker
+ * 
+ * Manages extension state, handles dropped content from content scripts,
+ * stores history, and coordinates communication between content scripts and the web app.
+ */
 console.log('OzoneAI background service worker started');
 
 // Initialize extension state

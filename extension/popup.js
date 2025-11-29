@@ -1,5 +1,10 @@
-// Popup script for OzoneAI chatbot interface
-
+/**
+ * OzoneAI Browser Extension - Popup Interface
+ * 
+ * Provides the main chatbot interface in the extension popup with chat history,
+ * message handling, and real-time analysis display. Communicates with content scripts
+ * to receive dropped content and display analysis results.
+ */
 let currentChatId = Date.now().toString();
 let messages = [];
 let isTyping = false;
