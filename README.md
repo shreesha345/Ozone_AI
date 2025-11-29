@@ -12,6 +12,7 @@
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Demo Video](#-demo-video)
 - [Key Features](#-key-features)
 - [System Architecture](#-system-architecture)
 - [Installation](#-installation)
@@ -29,7 +30,7 @@
 
 ## 🎯 Overview
 
-OzoneAI is a comprehensive misinformation detection system that combines multiple AI agents to analyze content for accuracy, credibility, bias, and manipulation. The system uses advanced LLMs (Claude, GPT-4, Gemini, or local Ollama models) with web search capabilities to provide evidence-based fact-checking.
+OzoneAI is a comprehensive misinformation detection system that combines multiple AI agents to analyze content for accuracy, credibility, bias, and manipulation. The system uses advanced LLMs (Claude,[...]
 
 ### What It Does
 
@@ -41,6 +42,20 @@ OzoneAI is a comprehensive misinformation detection system that combines multipl
 - **Generates comprehensive reports** with actionable insights
 - **Stores analysis in Neo4j** knowledge graph for pattern tracking
 - **Provides real-time streaming** via WebSocket API
+
+---
+
+## 🎬 Demo Video
+
+Watch a short demo of OzoneAI in action. If the embedded player does not display in your environment, use the direct link below.
+
+<video controls width="720" poster="">
+  <source src="https://private-user-images.githubusercontent.com/71629361/520357761-a9d3bec2-5536-4b34-affc-531f6c05aaf7.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQ0MDI0NjksIm5iZiI6MTc2NDQwMjE2OSwicGF0aCI6Ii83MTYyOTM2MS81MjAzNTc3NjEtYTlkM2JlYzItNTUzNi00YjM0LWFmZmMtNTMxZjZjMDVhYWY3Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTExMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMTI5VDA3NDI0OVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWZiYjc4ZjkyNGU2MTRiMGJmYzFlYzk4NzdlM2Y4YmE2ZjdlYmRjYjI1ZjI5NThlNGZiMDg5NDFjOGU3ZjZkMzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.EOEIwL5isB6Q_DgmsJpsfCyfq3JdXkHTtma_4Tm5fV0" type="video/mp4">
+  Your browser does not support the video tag. You can download / view it directly:
+  <a href="https://private-user-images.githubusercontent.com/71629361/520357761-a9d3bec2-5536-4b34-affc-531f6c05aaf7.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQ0MDI0NjksIm5iZiI6MTc2NDQwMjE2OSwicGF0aCI6Ii83MTYyOTM2MS81MjAzNTc3NjEtYTlkM2JlYzItNTUzNi00YjM0LWFmZmMtNTMxZjZjMDVhYWY3Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTExMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMTI5VDA3NDI0OVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWZiYjc4ZjkyNGU2MTRiMGJmYzFlYzk4NzdlM2Y4YmE2ZjdlYmRjYjI1ZjI5NThlNGZiMDg5NDFjOGU3ZjZkMzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.EOEIwL5isB6Q_DgmsJpsfCyfq3JdXkHTtma_4Tm5fV0">Demo video (MP4)</a>.
+</video>
+
+Note: The demo link uses a JWT-authenticated private GitHub user-media URL. If the video fails to load for you, try opening the direct link in a browser tab.
 
 ---
 
