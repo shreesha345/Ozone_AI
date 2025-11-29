@@ -2,6 +2,10 @@
 Misinformation Detection Agent (Main Orchestrator)
 Coordinates all subagents to produce comprehensive analysis.
 Uses parallel processing for claim verification.
+
+This is the main orchestrator that coordinates statement extraction, fact-checking,
+source analysis, bias detection, media analysis, and verdict synthesis. It uses
+ThreadPoolExecutor for parallel claim verification to improve performance.
 """
 from Agents.statementExtractorAgent import StatementExtractorAgent
 from Agents.factCheckerAgent import FactCheckerAgent
