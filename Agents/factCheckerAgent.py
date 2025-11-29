@@ -1,6 +1,9 @@
 """
 Fact Checker Agent
 Fact-checks individual statements using web search with logging.
+
+This agent verifies factual claims by searching for supporting and contradicting evidence,
+then assigns a verification status (VERIFIED, DEBUNKED, MISLEADING, etc.) with confidence scores.
 """
 from langchain.agents import create_agent
 from langchain_core.tools import tool
