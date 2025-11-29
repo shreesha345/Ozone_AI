@@ -1,6 +1,9 @@
 """
 Media Analyzer Agent
 Analyzes media assets (images, videos) for manipulation/deepfakes with logging.
+
+This agent detects potential deepfakes and media manipulation by analyzing visual artifacts,
+performing reverse image searches, and assessing AI generation probability.
 """
 from langchain.agents import create_agent
 from langchain_core.tools import tool
