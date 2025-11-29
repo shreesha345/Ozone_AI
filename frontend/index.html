@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ozone - Ask Anything</title>
+    <meta name="description" content="Where knowledge begins. Ask anything and get instant answers." />
+    <meta name="author" content="Ozone" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="Ozone - Ask Anything" />
+    <meta property="og:description" content="Where knowledge begins" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Ozone_ai" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- Prevent flash of wrong theme -->
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          // System preference
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <svg style="display: none;">
+      <symbol id="pplx-icon-x" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="pplx-icon-brand-google-filled" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.7975 9.1875C17.7975 8.55 17.73 7.9425 17.6175 7.35H9V10.8H14.04C13.8975 11.835 13.23 12.7575 12.24 13.3425V15.4425H14.94C16.6125 13.8975 17.7975 11.7375 17.7975 9.1875Z" fill="currentColor"/>
+        <path d="M9 18C11.43 18 13.4625 17.2275 14.94 15.4425L12.24 13.3425C11.43 13.8975 10.3275 14.22 9 14.22C6.7125 14.22 4.7625 12.7275 4.0275 10.71H1.215V12.8775C2.6475 15.75 5.565 18 9 18Z" fill="currentColor"/>
+        <path d="M4.0275 10.71C3.8475 10.1775 3.75 9.6075 3.75 9C3.75 8.3925 3.8475 7.8225 4.0275 7.29V5.1225H1.215C0.54 6.4575 0 7.6875 0 9C0 10.3125 0.54 11.5425 1.215 12.8775L4.0275 10.71Z" fill="currentColor"/>
+        <path d="M9 3.78C10.2075 3.78 11.2575 4.2075 12.12 5.025L14.985 2.16C13.455 0.825 11.43 0 9 0C5.565 0 2.6475 2.25 1.215 5.1225L4.0275 7.29C4.7625 5.2725 6.7125 3.78 9 3.78Z" fill="currentColor"/>
+      </symbol>
+      <symbol id="pplx-icon-brand-apple-filled" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.0541 15.21C12.2416 15.93 11.3666 16.245 10.2641 16.2C9.02658 16.14 8.33658 15.72 7.20408 15.72C6.07158 15.72 5.32658 16.125 4.14408 16.23C3.00858 16.35 2.07858 15.945 1.35858 15.21C-0.22642 13.275 -0.46142 10.38 0.91358 8.055C1.60358 6.93 2.65358 6.24 3.84408 6.195C4.99658 6.15 5.80908 6.63 6.84408 6.63C7.86408 6.63 8.88408 6.075 10.1441 6.18C10.6841 6.225 11.6236 6.42 12.4841 7.245C11.2336 8.115 10.7966 9.6 11.5936 10.95C12.4336 12.375 13.9336 13.095 15.2236 12.45C14.7436 13.365 14.0236 14.4 13.0541 15.21ZM8.99658 5.4C9.61158 4.545 9.98658 3.45 9.89658 2.34C8.85408 2.25 7.79658 2.76 7.18158 3.6C6.53658 4.425 6.13158 5.52 6.23658 6.6C7.38408 6.735 8.38158 6.255 8.99658 5.4Z" fill="currentColor"/>
+      </symbol>
+    </svg>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

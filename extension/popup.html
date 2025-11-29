@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>OzoneAI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      width: 360px;
+      height: 560px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: #f3f4f6; /* light gray */
+      color: #0f172a; /* slate-900 */
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing:antialiased;
+    }
+    .google-font-style {
+      position: relative;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+      padding: 0 4px;
+      line-height: 2;
+      margin-bottom: -2px;
+      font-family: 'Google Sans', Roboto, Arial, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .header {
+      padding: 14px 16px;
+      border-bottom: 1px solid #e6e7ea;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      border-radius: 10px 10px 0 0;
+    }
+    .logo {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ff7a00; /* orange */
+    }
+    .logo img { width: 28px; height: 28px; border-radius: 6px; }
+    .goto-ozone-btn {
+      background: #fff;
+      color: #374151;
+      border: 1px solid #e6e7ea;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 8px;
+      text-decoration: none;
+    }
+    .goto-ozone-btn:hover { transform: translateY(-1px); }
+    .header-actions { display:flex; gap:8px; align-items:center }
+    .icon-btn {
+      background: #fff;
+      border: 1px solid #e6e7ea;
+      border-radius: 10px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: #374151;
+      box-shadow: 0 4px 10px rgba(15,23,42,0.04);
+    }
+    .icon-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,0.06); }
+    .messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .message {
+      display: flex;
+      gap: 12px;
+      max-width: 100%;
+    }
+    .message.user {
+      flex-direction: row-reverse;
+    }
+    .message-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .message.assistant .message-avatar {
+      background: linear-gradient(135deg, #ff7a00, #ff9e66);
+      color: white;
+    }
+    .message.user .message-avatar {
+      background: hsl(0, 0%, 20%);
+      color: hsl(0, 0%, 98%);
+    }
+    .message-content {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #eef2f7;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.5;
+      word-wrap: break-word;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      transition: all 0.2s ease;
+    }
+    .message-content:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+    .message.user .message-content {
+      background: linear-gradient(135deg, #ff7a00 0%, #ff9e66 100%);
+      border-color: rgba(255,122,0,0.15);
+      color: white;
+    }
+    .message-image-preview {
+      margin-bottom: 10px;
+      border-radius: 14px;
+      overflow: hidden;
+      max-width: 100%;
+      background: hsl(0, 0%, 10%);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    .message-image-preview img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
+      display: block;
+    }
+    .message-text {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.95;
+    }
+    .message-time {
+      font-size: 11px;
+      color: hsl(0, 0%, 60%);
+      margin-top: 6px;
+    }
+    .empty-state {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-center;
+      text-align: center;
+      padding: 20px 12px;
+      color: #6b7280; /* gray-500 */
+    }
+    .empty-state svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+    .empty-state h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: hsl(0, 0%, 98%);
+    }
+    .empty-state p {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .input-container {
+      padding: 12px 14px 14px;
+      border-top: 1px solid #e6e7ea;
+      background: #ffffff;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 -6px 18px rgba(15,23,42,0.04);
+    }
+    .input-wrapper {
+      background: #fff;
+      border: 1px solid #eef2f7;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      padding: 8px 10px;
+      gap: 8px;
+      transition: all 0.15s ease;
+      box-shadow: 0 6px 20px rgba(15,23,42,0.04);
+    }
+    .input-wrapper:focus-within {
+      border-color: rgba(255,122,0,0.18);
+      box-shadow: 0 8px 26px rgba(255,122,0,0.06);
+      transform: translateY(-1px);
+    }
+    .input-wrapper textarea {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #0f172a;
+      font-size: 13px;
+      font-family: inherit;
+      resize: none;
+      max-height: 120px;
+      line-height: 1.4;
+    }
+    .input-wrapper textarea::placeholder {
+      color: #9ca3af;
+    }
+    .send-btn {
+      background: linear-gradient(135deg, #ff7a00 0%, #ff9e66 100%);
+      border: none;
+      border-radius: 10px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: white;
+      flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(255,122,0,0.18);
+    }
+    .send-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,122,0,0.2); }
+    .send-btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 8px 0;
+    }
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff7a00;
+      animation: typing 1.4s infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+      30% { transform: translateY(-10px); opacity: 1; }
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: hsl(0, 0%, 25%);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: hsl(0, 0%, 35%);
+    }
+    /* Dashboard card styles */
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      align-items: stretch;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.06);
+      border: 1px solid #eef2f7;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .card-header { display:flex; justify-content:space-between; align-items:flex-start }
+    .card-title { font-weight:700; color:#0f172a; font-size:13px }
+    .card-sub { font-size:11px; color:#6b7280 }
+    .card-body { display:flex; gap:10px; align-items:center }
+    .score-wrap { width:110px; display:flex; align-items:center; justify-content:center }
+    .ring { width:110px; height:110px }
+    .card-notes { flex:1; text-align:left }
+    .pill { display:inline-block; padding:6px 10px; border-radius:999px; background:#fff7ed; color:#92400e; font-weight:600; font-size:12px; border:1px solid #ffedd5; margin-bottom:8px }
+    .card-notes ul { margin-top:6px; margin-left:18px; color:#475569; font-size:12px }
+    .score-small { display:flex; flex-direction:column; align-items:flex-start; gap:6px }
+    .score-small .percent { font-weight:800; font-size:24px; color:#0f172a }
+    .score-small .label { font-size:12px; color:#6b7280 }
+    .card-notes .row { font-size:12px; color:#475569; margin-top:6px; display:flex; gap:8px; align-items:center }
+    .card-notes .check { color:#16a34a; font-weight:700; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo google-font-style">
+      <img src="icons/icon128.png" alt="Ozone logo" />
+      OzoneAI
+    </div>
+    <div class="header-actions">
+      <a href="http://localhost:8080/" target="_blank" class="goto-ozone-btn">
+        Open App
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </a>
+      <button class="icon-btn" id="newChatBtn" title="New chat">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+      <button class="icon-btn" id="historyBtn" title="Chat history">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="messages-container" id="messagesContainer">
+    <div class="empty-state" id="emptyState">
+      <!-- Professional dashboard cards like the attached design -->
+      <div class="dashboard">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Content Analysis</div>
+            <div class="card-sub">Credibility Score</div>
+          </div>
+          <div class="card-body">
+            <div class="score-wrap">
+              <svg class="ring" viewBox="0 0 120 120">
+                <defs>
+                  <linearGradient id="g1" x1="0" x2="1">
+                    <stop offset="0%" stop-color="#ff7a00" />
+                    <stop offset="100%" stop-color="#ffb47a" />
+                  </linearGradient>
+                </defs>
+                <circle cx="60" cy="60" r="48" stroke="#f1f5f9" stroke-width="12" fill="none" />
+                <circle class="progress" cx="60" cy="60" r="48" stroke="url(#g1)" stroke-width="12" stroke-linecap="round" fill="none" stroke-dasharray="302" stroke-dashoffset="6" transform="rotate(-90 60 60)" />
+                <text id="credibilityPercent" x="60" y="66" text-anchor="middle" font-size="28" font-weight="700" fill="#0f172a">98%</text>
+              </svg>
+            </div>
+            <div class="card-notes">
+              <div id="credibilityPill" class="pill">Very High</div>
+              <ul>
+                <li id="credibilityDesc">Sources verified, neutral language detected</li>
+                <li id="credibilityClaim">Key claims matched public records</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Deepfake Detection</div>
+            <div class="card-sub">Image & Video Analysis</div>
+          </div>
+          <div class="card-body">
+            <div class="score-small">
+              <div id="deepfakePercent" class="percent">&lt;1%</div>
+              <div id="deepfakeLabel" class="label">Authentic Media</div>
+            </div>
+            <div class="card-notes">
+              <div id="deepfakeRow1" class="row"><span class="check">✔</span> No AI generation artifacts detected</div>
+              <div id="deepfakeRow2" class="row"><span class="check">✔</span> Original camera signature present</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <div class="input-wrapper">
+      <textarea 
+        id="messageInput" 
+        placeholder="Ask anything or drag content here..."
+        rows="1"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

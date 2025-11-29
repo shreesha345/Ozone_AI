@@ -1,0 +1,30 @@
+const fs = require('fs');
+const path = require('path');
+
+// Create simple PNG icons using base64
+const createIcon = (size) => {
+  const canvas = `
+    <svg width="${size}" height="${size}" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <rect width="128" height="128" rx="${size > 64 ? 24 : 12}" fill="url(#gradient)"/>
+      <path d="M64 32L40 56H56V72H72V56H88L64 32Z" fill="white"/>
+      <path d="M88 88H40V80H88V88Z" fill="white"/>
+      <path d="M88 96H40V92H88V96Z" fill="white"/>
+      <defs>
+        <linearGradient id="gradient" x1="0" y1="0" x2="128" y2="128">
+          <stop offset="0%" stop-color="#667eea"/>
+          <stop offset="100%" stop-color="#764ba2"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  `;
+  
+  fs.writeFileSync(
+    path.join(__dirname, 'icons', `icon${size}.svg`),
+    canvas
+  );
+};
+
+// Create icons in different sizes
+[16, 48, 128].forEach(createIcon);
+
+console.log('Icons created successfully!');
