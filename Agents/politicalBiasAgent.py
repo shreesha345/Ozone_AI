@@ -1,6 +1,9 @@
 """
 Political Bias Analyzer Agent
 Analyzes text for political bias and leaning.
+
+This agent detects political bias in content by analyzing language patterns, framing,
+and ideological indicators to classify content on the political spectrum.
 """
 from langchain.agents import create_agent
 from Agents.prompts import POLITICAL_BIAS_PROMPT
