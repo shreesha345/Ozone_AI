@@ -1,6 +1,9 @@
 """
 Model Factory
 Creates the appropriate LLM model based on configuration.
+
+This factory supports multiple LLM providers (OpenAI, Anthropic, Google, Ollama)
+and automatically selects the appropriate model based on available API keys.
 """
 from config import Config
 
